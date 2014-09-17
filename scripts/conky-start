@@ -1,0 +1,4 @@
+#!/bin/sh
+conky -d
+#conky -a top_left -x 1700 -y 800 -d
+

@@ -1,0 +1,4 @@
+#/bin/sh
+
+espeak $* -v mb-us1 -p 60 -s 130
+

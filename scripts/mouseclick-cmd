@@ -1,0 +1,10 @@
+#!/bin/bash
+
+eval $(xdotool getmouselocation --shell)
+
+echo "xdotool mousemove $X $Y";
+echo "xdotool click 1";
+echo "sleep 0.3";
+
+
+

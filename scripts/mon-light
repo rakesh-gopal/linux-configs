@@ -1,0 +1,15 @@
+#!/bin/bash
+
+while :
+do
+    brightness=$(head -n 1 /dev/ttyUSB0);
+    if test -n "$brightness" -a "$brightness" != "$prevBrightness"; then
+      echo $brightness;
+      xrandr --output VGA1 --brightness $brightness;
+      xrandr --output LVDS1 --brightness $brightness;
+      prevBrightness=$brightness;
+    fi;
+    sleep 0.2;
+done
+
+

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+gedit ~/tmp/speak-file;
+mspeak -f ~/tmp/speak-file;
+

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+weekday=$(date +"%A");
+hour=$(date +"%l");
+min=$(date +"%M" | sed 's/^0//');
+ampm=$(date +"%p");
+
+if (( $min > 0 )); then
+    spoken_time="Hello, It's $weekday, $hour $min $ampm";
+else
+    spoken_time="Hello, It's $weekday, $hour $ampm";
+fi;
+
+echo $spoken_time | espeak --stdin -v mb-us1 -p 60 -s 130
+
+

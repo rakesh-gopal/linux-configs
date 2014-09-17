@@ -1,0 +1,22 @@
+#!/bin/sh
+
+#xmodmap ~/.speedswapper
+sleep 5
+say-welcome
+/opt/thefanclub/grive-tools/grive-indicator &
+#/home/rakesh/bin/gdrive-daemon.sh &
+#sleep 5
+#qorganizer&
+#sleep 5
+#tomboy&
+#sleep 5
+#guake&
+sleep 5
+conky-start&
+#sleep 5
+#workrave&
+#sleep 5
+#empathy&
+sleep 5
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1&
+

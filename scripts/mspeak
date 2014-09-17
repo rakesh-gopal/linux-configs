@@ -1,0 +1,5 @@
+#/bin/sh
+
+#espeak $* -s 150
+espeak $* -v mb-us2 -s 140
+

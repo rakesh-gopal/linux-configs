@@ -1,0 +1,8 @@
+#!/bin/bash
+
+remote=$1;
+extra_flags="$2 $3 $4 $5";
+
+scp $extra_flags -r ~/git/myScripts/remote/vim/ $remote:~/.vim/
+scp $extra_flags ~/git/myScripts/remote/vimrc $remote:~/.vimrc
+
