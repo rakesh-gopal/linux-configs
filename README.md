@@ -10,6 +10,11 @@ for windowing and tabs. Also includes plugins like Ack, SudoWrite,
     most of the config is in vimrc.after file.
 Run 'install.sh' to install the config.
 
+**remote-vimrc**  
+Vim config for the remote servers that I use. Light-weight and includes
+only my short-cuts and conque-term that allows running terminals in vim
+windows.
+
 **scripts**  
 Some of the useful scripts, I've written, not including the ones
 available from else-where.  
