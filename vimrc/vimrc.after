@@ -25,13 +25,18 @@ set laststatus=2
 
 set undofile
 set colorcolumn=90
-
+colorscheme delek
+set scrolloff=2
+set showmatch
+set matchtime=2
+set matchpairs+=<:>
+set lazyredraw
 set gdefault
 
-command P w | !python %
-command G w | !gcc % -o %.o;%.o
-command F w | !firefox %
-command E w | !. %
+" command P w | !python %
+" command G w | !gcc % -o %.o;%.o
+" command F w | !firefox %
+" command E w | !. %
 
 nnoremap <tab> %
 vnoremap <tab> %
@@ -45,10 +50,8 @@ map! <F8> <ESC>
 map! <F7> <ESC>
 inoremap `` <ESC>
 cnoremap `` <ESC>
-inoremap jj <ESC>
-cnoremap jj <ESC>
-inoremap 0w <ESC>:w<CR>
-nnoremap 0w <ESC>:w<CR>
+inoremap 9w <ESC>:w<CR>
+nnoremap 9w <ESC>:w<CR>
 
 nnoremap ; :
 
@@ -57,28 +60,29 @@ nnoremap <silent> <leader><space> :Ack<space>
 nnoremap <silent> 9<space> :Ack<space>
 
 " Esc key is far out of my hand, 'jj' insetad
+inoremap jj <ESC>
 
-nmap wt :TagbarToggle<CR>
+nmap Wt :TagbarToggle<CR>
 
-nmap <silent> ,s <C-w>s
-nmap <silent> ,l <C-w>l
-nmap <silent> ,j <C-w>j
-nmap <silent> ,k <C-w>k
-nmap <silent> ,h <C-w>h
-nmap <silent> ,v <C-w>v
-nmap <silent> ,q <C-w>q
-nmap <silent> ,9 <C-w><C-]><C-w>L
-nmap <silent> ws <C-w>s
-nmap <silent> wl <C-w>l
-nmap <silent> wj <C-w>j
-nmap <silent> wk <C-w>k
-nmap <silent> wh <C-w>h
-nmap <silent> wv <C-w>v
-nmap <silent> wq <C-w>q
-nmap <silent> w9 <C-w><C-]><C-w>L
-nmap <silent> wg <C-w>f<C-w>L
+nmap ,s <C-w>s
+nmap ,l <C-w>l
+nmap ,j <C-w>j
+nmap ,k <C-w>k
+nmap ,h <C-w>h
+nmap ,v <C-w>v
+nmap ,q <C-w>q
+nmap ,9 <C-w><C-]><C-w>L
+nmap ,gf <C-w>f<C-w>L
+nmap Ws <C-w>s
+nmap Wl <C-w>l
+nmap Wj <C-w>j
+nmap Wk <C-w>k
+nmap Wh <C-w>h
+nmap Wv <C-w>v
+nmap Wq <C-w>q
+nmap W9 <C-w><C-]><C-w>L
+nmap Wf <C-w>f<C-w>L
 
-cmap oa :CtrlP<CR>
 nmap <silent> <leader>p :CtrlP<CR>
 
 set cpoptions+=$
@@ -118,6 +122,7 @@ cmap Cword <C-r><C-w>
 cnoremap <leader>cw <C-r><C-w>
 cmap Cfile <C-r>%
 cnoremap <leader>cf <C-r>%
+cnoremap <leader>p <C-r>"
 
 nnoremap <leader>gw :Gwrite<CR>
 
@@ -126,15 +131,18 @@ nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
+nnoremap <leader>* :CtrlP<CR>
 vnoremap <leader>c yo<C-R>=system('<C-r>"')<CR>
 
 command Ses :source .session.vim~
 command Vimrc e ~/.vimrc.after
-command Sh setlocal nospell | highlight ExtraWhitespace guibg=#F9F5FF | ConqueTerm bash
+command Sh setlocal nospell | ConqueTerm bash
 command Note tabnew | lcd ~/git/myScripts/notes/
 
 nnoremap <leader>r :ConqueTerm 
 nnoremap <leader>ru :ConqueTerm 
+
+nnoremap <leader>n :NERDTreeToggle<CR>
 
 set wildmode=longest,list
 
@@ -187,7 +195,7 @@ let g:acp_mappingdriven = 0
 
 if has("gui_running")
   if has("gui_gtk2")
-    set guifont=ubuntu\ mono\ 11
+    set guifont=Inconsolata\ 12
   elseif has("gui_macvim")
     set guifont=menlo\ regular:h13
   elseif has("gui_win32")
