@@ -1,0 +1,235 @@
+" size of a hard tabstop
+set tabstop=4
+
+" size of an "indent"
+set shiftwidth=4
+
+" a combination of spaces and tabs are used to simulate tab stops at a width
+" other than the (hard)tabstop
+set softtabstop=4
+
+" Set Auto Indent on
+set autoindent
+set smartindent
+set expandtab
+
+syntax on
+set nu
+"set relativenumber
+
+set hlsearch
+
+set synmaxcol=300
+set laststatus=2
+set visualbell
+
+set undofile
+set scrolloff=2
+set showmatch
+set matchtime=2
+set matchpairs+=<:>
+set lazyredraw
+set gdefault
+
+" command P w | !python %
+" command G w | !gcc % -o %.o;%.o
+" command F w | !firefox %
+" command E w | !. %
+
+nnoremap <tab> %
+vnoremap <tab> %
+
+"I hit F1 instead of esc sometimes
+map! <F1> <ESC>
+nnoremap <F1> <ESC>
+cnoremap <F1> <ESC>
+map! <F2> <ESC>
+map! <F8> <ESC>
+map! <F7> <ESC>
+inoremap jj <ESC>
+inoremap 9w <ESC>:w<CR>
+nnoremap 9w <ESC>:w<CR>
+
+nnoremap ; :
+
+
+" Esc key is far out of my hand, 'jj' insetad
+inoremap jj <ESC>
+
+nmap Wt :TagbarToggle<CR>
+
+nmap ,s <C-w>s
+nmap ,l <C-w>l
+nmap ,j <C-w>j
+nmap ,k <C-w>k
+nmap ,h <C-w>h
+nmap ,v <C-w>v
+nmap ,q <C-w>q
+nmap ,9 <C-w><C-]><C-w>L
+nmap ,gf <C-w>f<C-w>L
+nmap Ws <C-w>s
+nmap Wl <C-w>l
+nmap Wj <C-w>j
+nmap Wk <C-w>k
+nmap Wh <C-w>h
+nmap Wv <C-w>v
+nmap Wq <C-w>q
+nmap W9 <C-w><C-]><C-w>L
+nmap Wf <C-w>f<C-w>L
+
+
+cmap oa :CtrlP<CR>
+
+set cpoptions+=$
+nmap th gT<CR>
+nmap tl gt<CR>
+nmap <C-Left> gT<CR>
+nmap <C-Right> gt<CR>
+nmap te :tabedit 
+nmap tf :tabfind 
+nmap tq :tabclose<CR>
+nmap t0 :tabfirst<CR>
+nmap t$ :tablast<CR>
+nmap tt gt
+nmap tw <C-w>T
+nmap tn :tabnew<CR>
+nmap t9 <C-w><C-]><C-w>T
+nmap tgf <C-w>gf
+
+nmap 99 <C-]>
+nmap 9v <C-w>v<C-w>l<C-]>
+nmap 9h <C-o>
+nmap 9f :Ack <C-r><C-w> %:p:h<CR>
+nmap 9pf :Ack <C-r><C-w> %:p:h:h<CR>
+nmap 9ppf :Ack <C-r><C-w> %:p:h:h:h<CR>
+nmap 9pppf :Ack <C-r><C-w> %:p:h:h:h:h<CR>
+nmap 9ppppf :Ack <C-r><C-w> %:p:h:h:h:h:h<CR>
+nmap 9n :cnext<CR>
+nmap 9N :cprevious<CR>
+nmap 9p :cprevious<CR>
+nnoremap <leader>f :Ack 
+nnoremap 9<space> :Ack 
+nnoremap <leader><space> :Ack 
+
+nmap <C-d> :colorscheme default<CR>
+
+cmap Cword <C-r><C-w>
+cnoremap <leader>cw <C-r><C-w>
+cmap Cfile <C-r>%
+cnoremap <leader>cf <C-r>%
+
+nnoremap <leader>gw :Gwrite<CR>
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
+
+nnoremap <leader>* :CtrlP<CR>
+vnoremap <leader>c yo<C-R>=system('<C-r>"')<CR>
+
+command Ses :source .session.vim~
+command Vimrc e ~/.vimrc.after
+command Sh setlocal nospell | ConqueTerm bash
+command Note tabnew<CR>:lcd ~/git/myScripts/notes/
+
+nnoremap <leader>r :ConqueTerm 
+nnoremap <leader>ru :ConqueTerm 
+nnoremap <leader>p :CtrlP<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
+
+vnoremap C !astyle<CR>
+vnoremap J !js-beautify -f -<CR>
+vnoremap H !html-beautify -f -<CR>
+vnoremap S !css-beautify -f -<CR>
+vnoremap P !autopep8 -<CR>
+nnoremap <silent> <leader>F :call FormatCode()<CR>
+
+set wildmode=longest,list
+
+set background=light
+
+set nf=octal,hex,alpha
+
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Ubuntu\ Mono\ 11
+  elseif has("gui_macvim")
+    set guifont=Menlo\ Regular:h13
+  elseif has("gui_win32")
+    set guifont=Consolas:h11:cANSI
+  endif
+endif
+
+" Source .../.vimrc and use .../tags in ancestor of source directory.
+" useful when you have source tree eight fathom deep,
+" an exercise in Vim loops.
+let parent=1
+let local_vimrc = ".vimrc"
+let local_tags = "tags"
+while parent <= 8
+  if filewritable(local_vimrc)
+"    echomsg "sourcing " . local_vimrc
+"    exe ":so " . local_vimrc
+  endif
+  let local_vimrc = "../". local_vimrc
+  let local_tags = "../". local_tags
+  exe ":set tags+=".local_tags
+  let parent = parent+1
+  " TODO: stop at the root on any system and also ~ on Unix.
+endwhile
+unlet parent local_vimrc
+
+set hlsearch
+
+colorscheme delek
+
+set synmaxcol=300
+set laststatus=2
+"set visualbell
+set undofile
+set colorcolumn=90
+
+set gdefault
+
+" Write all files to disk on exit
+au FocusLost * execute ":silent! wa"
+"au VimLeavePre * :mksession!.session.vim~
+"au BufWritePost,FileWritePost * execute ":silent! mkdir -p ~/Dropbox/vim/`date +\%d\%b\%y` && cp <afile> ~/Dropbox/vim/`date +\%d\%b\%y`"
+
+" change to directory of current file automatically
+au BufEnter * execute ":silent! lcd " . expand("%:p:h")
+
+set diffopt+=iwhite
+set diffexpr=DiffW()
+function DiffW()
+    let opt = ""
+     if &diffopt =~ "icase"
+       let opt = opt . "-i "
+     endif
+     if &diffopt =~ "iwhite"
+       let opt = opt . "-w " " vim uses -b by default
+     endif
+     silent execute "!diff -a --binary " . opt .
+       \ v:fname_in . " " . v:fname_new .  " > " . v:fname_out
+endfunction
+
+function FormatCode()
+    if &ft == "c" || &ft == "cpp" || &ft == "java" || &ft == "cs"
+        silent execute "%!astyle"
+    elseif &ft == "python"
+        silent execute "%!autopep8 -"
+    elseif &ft == "javascript"
+        silent execute "%!js-beautify -f -"
+    elseif &ft == "html"
+        silent execute "%!html-beautify -f -"
+    elseif &ft == "css"
+        silent execute "%!css-beautify -f -"
+    endif
+endfunction
+
+unmap ,hs
+
+" Auto-popup only pops-up, on keys and not cursor movement.
+let g:acp_mappingDriven = 0
+
+set nolist
