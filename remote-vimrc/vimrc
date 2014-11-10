@@ -30,11 +30,6 @@ set colorcolumn=90
 
 set gdefault
 
-" command P w | !python %
-" command G w | !gcc % -o %.o;%.o
-" command F w | !firefox %
-" command E w | !. %
-
 nnoremap <tab> %
 vnoremap <tab> %
 
@@ -42,23 +37,17 @@ vnoremap <tab> %
 map! <F1> <ESC>
 nnoremap <F1> <ESC>
 cnoremap <F1> <ESC>
-map! <F2> <ESC>
-map! <F8> <ESC>
-map! <F7> <ESC>
-inoremap `` <ESC>
-cnoremap `` <ESC>
-inoremap 0w <ESC>:w<CR>
-nnoremap 0w <ESC>:w<CR>
-inoremap <TAB><TAB> <C-n>
+inoremap 9w <ESC>:w<CR>
+nnoremap 9w <ESC>:w<CR>
+inoremap <C-@> <C-n>
+
+cnoremap jj <ESC>
+inoremap jj <ESC>
 
 nnoremap ; :
 
 nnoremap <leader>FF :vim 
-
-" Esc key is far out of my hand, 'jj' insetad
-inoremap jj <ESC>
-
-nmap wt :TagbarToggle<CR>
+nnoremap <C-f> :vim 
 
 nmap ,s <C-w>s
 nmap ,l <C-w>l
@@ -68,23 +57,21 @@ nmap ,h <C-w>h
 nmap ,v <C-w>v
 nmap ,q <C-w>q
 nmap ,9 <C-w><C-]><C-w>L
-nmap ws <C-w>s
-nmap wl <C-w>l
-nmap wj <C-w>j
-nmap wk <C-w>k
-nmap wh <C-w>h
-nmap wv <C-w>v
-nmap wq <C-w>q
-nmap w9 <C-w><C-]><C-w>L
-nmap wgf <C-w>f
-
-cmap oa :CtrlP<CR>
+nmap Ws <C-w>s
+nmap Wl <C-w>l
+nmap Wj <C-w>j
+nmap Wk <C-w>k
+nmap Wh <C-w>h
+nmap Wv <C-w>v
+nmap Wq <C-w>q
+nmap W9 <C-w><C-]><C-w>L
+nmap Wf <C-w>f<C-w>L
 
 set cpoptions+=$
-nmap th gT<CR>
-nmap tl gt<CR>
-nmap <C-Left> gT<CR>
-nmap <C-Right> gt<CR>
+nmap th gT
+nmap tl gt
+nmap <C-Left> gT
+nmap <C-Right> gt
 nmap te :tabedit 
 nmap tf :tabfind 
 nmap tq :tabclose<CR>
@@ -99,7 +86,6 @@ nnoremap <silent> tH :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> tL :execute 'silent! tabmove ' . tabpagenr()<CR>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
-
 
 nmap 99 <C-]>
 nmap 9v <C-w>v<C-w>l<C-]>
@@ -116,6 +102,7 @@ cmap Cword <C-r><C-w>
 cnoremap <leader>cw <C-r><C-w>
 cmap Cfile <C-r>%
 cnoremap <leader>cf <C-r>%
+cnoremap <leader>p <C-r>"
 
 inoremap <F9> <C-O>za
 nnoremap <F9> za

@@ -81,10 +81,10 @@ nmap Wf <C-w>f<C-w>L
 cmap oa :CtrlP<CR>
 
 set cpoptions+=$
-nmap th gT<CR>
-nmap tl gt<CR>
-nmap <C-Left> gT<CR>
-nmap <C-Right> gt<CR>
+nmap th gT
+nmap tl gt
+nmap <C-Left> gT
+nmap <C-Right> gt
 nmap te :tabedit 
 nmap tf :tabfind 
 nmap tq :tabclose<CR>
@@ -117,6 +117,7 @@ cmap Cword <C-r><C-w>
 cnoremap <leader>cw <C-r><C-w>
 cmap Cfile <C-r>%
 cnoremap <leader>cf <C-r>%
+cnoremap <leader>p <C-r>"
 
 nnoremap <leader>gw :Gwrite<CR>
 inoremap <F9> <C-O>za

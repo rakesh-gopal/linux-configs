@@ -116,6 +116,8 @@ alias ip-address="ifconfig | awk '/inet addr:/ && !/127.0.0.1/ {print substr(\$2
 alias adt-tools="cd ~/software/installed/adt-bundle-linux/sdk/tools";
 
 CDPATH=".:..:~:~/git:~/Documents"
+alias keymails="cd 3idiots/KeyMails/Colimetrics.KeyMails/Colimetrics.KeyMails/"
+
 NODE_PATH="/usr/local/lib/jsctags:${NODE_PATH}"
 
 #wget localhost -O /dev/null 2> /dev/null;
@@ -194,8 +196,8 @@ if [ -f ~/bin/git-completion.bash ]; then
   source ~/bin/git-completion.bash;
 fi
 
-function ssh {
-    /usr/bin/ssh $* -t "tmux a -t rakesh || tmux new -s rakesh";
+function tssh {
+    /usr/bin/ssh $* -t "source /etc/profile;tmux a -t rakesh || tmux new -s rakesh";
 }
 
 function branch
