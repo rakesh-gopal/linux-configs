@@ -189,7 +189,7 @@ function ps1pwd {
 
 #PS1="\[\e[1;32m->   \d \T    <-\e[m --- Mac OSX --- \n\n\w\$(ps1pwd) "
 #PS1="\[\e[0;90m\d \T     --- Mac OS-X\e[m --- \$(ps1PrefSuccess)\n\n\w\$(ps1pwd) \e[1;94m"
-PS1="\[\e[1;94m\d \T     --- Mac OS-X\e[m --- \$(ps1PrefSuccess)\n\n\w\$(ps1pwd) "
+PS1="\d \T     --- \[\e[1;94mMac OS-X\e[m --- \$(ps1PrefSuccess)\n\n\w\$(ps1pwd) "
 #trap 'echo -en "\e[0m"' DEBUG
 
 if [ -f ~/bin/git-completion.bash ]; then
@@ -245,4 +245,13 @@ function pull
     fi ;
 }
 
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH";
+
+alias clear_dns_cache="sudo dscacheutil -flushcache";
+
+alias youtube-dl="/usr/local/bin/youtube-dl";
+
+export MAKEOBJDIRPREFIX=$HOME/.gtags/globaltags;
+alias maketags='mkdir -p $MAKEOBJDIRPREFIX/$(pwd -P) && gtags -i $MAKEOBJDIRPREFIX/$(pwd -P)';
+alias maketags_cpp='GTAGSFORCECPP=1 $(maketags)';
 
