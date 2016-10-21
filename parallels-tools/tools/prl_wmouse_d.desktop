@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=10.4.0.29337
+Encoding=UTF-8
+Name=Parallels Walking Mouse Daemon
+Type=Application
+Exec=sh -c 'LD_LIBRARY_PATH=/usr/lib/parallels-tools/lib:$LD_LIBRARY_PATH /usr/bin/prl_wmouse_d -d'
+X-KDE-autostart-phase=1
+GenericName[en_US]=

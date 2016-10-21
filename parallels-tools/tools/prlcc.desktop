@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=10.4.0.29337
+Encoding=UTF-8
+Name=Parallels Control Center
+Type=Application
+Exec=/usr/bin/prlcc
+X-KDE-autostart-phase=1
+GenericName[en_US]=
